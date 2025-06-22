@@ -67,6 +67,7 @@ export async function POST(request: NextRequest) {
     const newTask = await db
       .insert(tasks)
       .values({
+        userId: currentUser.userId,
         title,
         description,
         workspaceId,

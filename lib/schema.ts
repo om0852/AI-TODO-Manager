@@ -39,15 +39,14 @@ export const tasks = pgTable("tasks", {
   priority: priorityEnum("priority").default("medium"),
   progress: integer("progress").default(0), // e.g., 0 to 100
   createdAt: timestamp("created_at").defaultNow(),
+  userId: text("user_id").notNull(),
 });
 
 // --- Subtasks Table
 export const subtasks = pgTable("subtasks", {
   id: serial("id").primaryKey(),
-  taskId: integer("task_id")
-    .notNull()
-    .references(() => tasks.id),
   title: text("title").notNull(),
-  completed: boolean("completed").default(false),
-  createdAt: timestamp("created_at").defaultNow(),
+  taskId: integer("task_id").notNull(),
+  userId: text("user_id").notNull(),
+  isCompleted: boolean("is_completed").default(false),
 });
