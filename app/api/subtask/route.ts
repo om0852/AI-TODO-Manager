@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
         { status: 401 }
       );
 
-    const { title, taskId, notes } = await req.json();
+    const { title, taskId } = await req.json();
 
     if (!title || !taskId) {
       return NextResponse.json(
@@ -91,7 +91,7 @@ export async function PUT(req: NextRequest) {
         { status: 401 }
       );
 
-    const { id, title, isCompleted, notes } = await req.json();
+    const { id, title, isCompleted } = await req.json();
 
     if (!id) {
       return NextResponse.json(
